@@ -1,0 +1,68 @@
+{
+  "name": "typed-magento-graphql",
+  "description": "Type-safe GraphQL client for Magento 2 / Mage-OS with Zod input validation",
+  "version": "0.248.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./schemas": {
+      "types": "./dist/schemas/index.d.ts",
+      "import": "./dist/schemas/index.js",
+      "default": "./dist/schemas/index.js"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "sideEffects": false,
+  "private": false,
+  "keywords": [
+    "magento",
+    "magento2",
+    "mage-os",
+    "graphql",
+    "typescript",
+    "zod"
+  ],
+  "author": {
+    "name": "Filippo Bovo",
+    "email": "hello@filippobovo.com",
+    "url": "https://github.com/pirosauro"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirosauro/typed-magento-graphql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pirosauro/typed-magento-graphql/issues"
+  },
+  "homepage": "https://github.com/pirosauro/typed-magento-graphql#readme",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.1",
+    "@typescript-eslint/parser": "^8.57.1",
+    "eslint": "^10.0.3",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3"
+  }
+}
