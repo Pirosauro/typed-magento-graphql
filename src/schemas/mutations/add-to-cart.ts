@@ -7,10 +7,10 @@ import { CartItemInputSchema } from '../common';
  */
 export const AddToCartMutationInputSchema = z
   .object({
-    /** Items to be added to the cart. */
-    cartItems: z.array(CartItemInputSchema.unwrap()),
     /** Unique cart identifier value. */
-    cartId: z.string()
+    cartId: z.string(),
+    /** Items to be added to the cart. */
+    cartItems: z.array(CartItemInputSchema.unwrap())
   })
   .optional();
 

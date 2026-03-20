@@ -42,10 +42,10 @@ export const FilterMatchTypeInputSchema = z
  */
 export const FilterRangeTypeInputSchema = z
   .object({
-    /** Upper bound for range filtering. */
-    to: z.string().optional(),
     /** Lower bound for range filtering. */
-    from: z.string().optional()
+    from: z.string().optional(),
+    /** Upper bound for range filtering. */
+    to: z.string().optional()
   })
   .optional();
 
