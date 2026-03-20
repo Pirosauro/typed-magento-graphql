@@ -4,13 +4,15 @@
 export type GraphQLID = string;
 export type GraphQLInt = number;
 export type GraphQLFloat = number;
+export type GraphQLString = string;
+export type GraphQLBoolean = boolean;
 
 /**
  * Monetary amount with currency code.
  */
 export interface Money {
   /** Currency code in ISO format. */
-  currency?: string;
+  currency?: GraphQLString;
   /** Numeric amount value. */
   value?: GraphQLFloat;
 }
@@ -32,9 +34,9 @@ export interface SearchResultPageInfo {
  */
 export interface CartAddressCountry {
   /** Two-letter country code. */
-  code?: string;
+  code?: GraphQLString;
   /** Display label for the country. */
-  label?: string;
+  label?: GraphQLString;
 }
 
 /**
@@ -42,9 +44,9 @@ export interface CartAddressCountry {
  */
 export interface CartAddressRegion {
   /** Region code value. */
-  code?: string;
+  code?: GraphQLString;
   /** Region display label. */
-  label?: string;
+  label?: GraphQLString;
   /** Internal region identifier. */
   region_id?: GraphQLInt;
 }

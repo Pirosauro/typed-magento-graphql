@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { GraphQLIntSchema } from './common';
+import { GraphQLIntSchema } from '../common';
 
 /**
  * Validates variables for the categories query.

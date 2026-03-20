@@ -1,4 +1,4 @@
-import type { GraphQLFloat, GraphQLInt, SearchResultPageInfo } from './common';
+import type { GraphQLFloat, GraphQLInt, GraphQLString, SearchResultPageInfo } from './common';
 import type { CmsBlock } from './cms';
 import type { Product } from './product';
 
@@ -9,11 +9,13 @@ export interface Breadcrumb {
   /** Category level for this breadcrumb. */
   category_level?: GraphQLInt;
   /** Category name for this breadcrumb. */
-  category_name?: string;
+  category_name?: GraphQLString;
+  /** Category unique identifier for this breadcrumb. */
+  category_uid?: GraphQLString;
   /** Category URL key for this breadcrumb. */
-  category_url_key?: string;
+  category_url_key?: GraphQLString;
   /** Category URL path for this breadcrumb. */
-  category_url_path?: string;
+  category_url_path?: GraphQLString;
 }
 
 /** 
@@ -33,29 +35,29 @@ export interface CategoryProducts {
  */
 export interface CategoryTree {
   /** Available sort keys for category product listings. */
-  available_sort_by?: string[];
+  available_sort_by?: GraphQLString[];
   /** Breadcrumbs for this category location. */
   breadcrumbs?: Breadcrumb[];
   /** Canonical URL for this category page. */
-  canonical_url?: string;
+  canonical_url?: GraphQLString;
   /** Child categories under the current node. */
   children?: CategoryTree[];
   /** Number of child categories in string form. */
-  children_count?: string;
+  children_count?: GraphQLString;
   /** CMS block attached to this category. */
   cms_block?: CmsBlock;
   /** Custom layout update file value. */
-  custom_layout_update_file?: string;
+  custom_layout_update_file?: GraphQLString;
   /** Default sort field for this category. */
-  default_sort_by?: string;
+  default_sort_by?: GraphQLString;
   /** Category description text. */
-  description?: string;
+  description?: GraphQLString;
   /** Display mode value for this category. */
-  display_mode?: string;
+  display_mode?: GraphQLString;
   /** Category filter price range step value. */
   filter_price_range?: GraphQLFloat;
   /** Category image URL value. */
-  image?: string;
+  image?: GraphQLString;
   /** Menu visibility flag as integer. */
   include_in_menu?: GraphQLInt;
   /** Anchor flag as integer value. */
@@ -65,17 +67,17 @@ export interface CategoryTree {
   /** Depth level of this category node. */
   level?: GraphQLInt;
   /** Meta description value for SEO. */
-  meta_description?: string;
+  meta_description?: GraphQLString;
   /** Meta keywords value for SEO. */
-  meta_keywords?: string;
+  meta_keywords?: GraphQLString;
   /** Meta title value for SEO. */
-  meta_title?: string;
+  meta_title?: GraphQLString;
   /** Category name displayed to users. */
-  name?: string;
+  name?: GraphQLString;
   /** Full category path value. */
-  path?: string;
+  path?: GraphQLString;
   /** Category path within the current store. */
-  path_in_store?: string;
+  path_in_store?: GraphQLString;
   /** Position among sibling categories. */
   position?: GraphQLInt;
   /** Number of visible products in this category. */
@@ -85,17 +87,17 @@ export interface CategoryTree {
   /** Redirect code for routed category URLs. */
   redirect_code?: GraphQLInt;
   /** Relative routed URL for this category. */
-  relative_url?: string;
+  relative_url?: GraphQLString;
   /** Routed entity type value. */
-  type?: string;
+  type?: GraphQLString;
   /** Unique category identifier. */
-  uid?: string;
+  uid?: GraphQLString;
   /** Category URL key segment. */
-  url_key?: string;
+  url_key?: GraphQLString;
   /** Category URL path in storefront. */
-  url_path?: string;
+  url_path?: GraphQLString;
   /** Category URL suffix value. */
-  url_suffix?: string;
+  url_suffix?: GraphQLString;
 }
 
 /**

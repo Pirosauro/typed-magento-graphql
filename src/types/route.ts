@@ -1,13 +1,15 @@
+import type { GraphQLInt, GraphQLString } from './common';
+
 /**
  * Lightweight routable resource metadata.
  */
 export interface RoutableInterface {
   /** Redirect code for requested URL. */
-  redirect_code?: number;
+  redirect_code?: GraphQLInt;
   /** Relative URL for routed resource. */
-  relative_url?: string;
+  relative_url?: GraphQLString;
   /** Routed entity type value. */
-  type?: string;
+  type?: GraphQLString;
 }
 
 /**

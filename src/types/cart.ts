@@ -1,4 +1,14 @@
-import type { CartAddressCountry, CartAddressRegion, GraphQLFloat, GraphQLID, Money, SearchResultPageInfo } from './common';
+import type {
+  CartAddressCountry,
+  CartAddressRegion,
+  GraphQLBoolean,
+  GraphQLFloat,
+  GraphQLID,
+  GraphQLInt,
+  GraphQLString,
+  Money,
+  SearchResultPageInfo
+} from './common';
 import type { Product, ProductDiscount } from './product';
 
 /** 
@@ -6,11 +16,11 @@ import type { Product, ProductDiscount } from './product';
  */
 export interface GiftMessage {
   /** Sender name. */
-  from?: string;
+  from?: GraphQLString;
   /** Gift message text. */
-  message?: string;
+  message?: GraphQLString;
   /** Recipient name. */
-  to?: string;
+  to?: GraphQLString;
 }
 
 /** 
@@ -20,7 +30,7 @@ export interface CartItemError {
   /** Error code describing the cart item issue. */
   code?: CartItemErrorType;
   /** Localized error message. */
-  message?: string;
+  message?: GraphQLString;
 }
 
 /** 
@@ -28,24 +38,42 @@ export interface CartItemError {
  */
 export type CartItemErrorType = 'UNDEFINED' | 'ITEM_QTY' | 'ITEM_INCREMENTS';
 
+/** Cart user input error code enumeration. */
+export type CartUserInputErrorType =
+  | 'COULD_NOT_FIND_CART_ITEM'
+  | 'INSUFFICIENT_STOCK'
+  | 'INVALID_PARAMETER_VALUE'
+  | 'NOT_SALABLE'
+  | 'PRODUCT_NOT_FOUND'
+  | 'REQUIRED_PARAMETER_MISSING'
+  | 'UNDEFINED';
+
+/** Cart user input error details. */
+export interface CartUserInputError {
+  /** Cart-specific error code value. */
+  code?: CartUserInputErrorType;
+  /** Localized error message. */
+  message?: GraphQLString;
+}
+
 /** Contains tax information for items in the cart. */
 export interface CartTaxItem {
   /** Amount of tax applied to the item. */
   amount?: Money;
   /** Tax label description. */
-  label?: string;
+  label?: GraphQLString;
 }
 
 /** Represents a discount applied to cart item pricing. */
 export interface Discount {
   /** Entity type this discount is applied to. */
-  applied_to?: 'ITEM' | 'SHIPPING' | string;
+  applied_to?: 'ITEM' | 'SHIPPING' | GraphQLString;
   /** Discount amount. */
   amount?: Money;
   /** Coupon related to the discount, if any. */
   coupon?: AppliedCoupon;
   /** Discount label value. */
-  label?: string;
+  label?: GraphQLString;
 }
 
 /** A fixed product tax entry that can be applied to a product price. */
@@ -53,7 +81,7 @@ export interface FixedProductTax {
   /** Tax amount. */
   amount?: Money;
   /** Tax label. */
-  label?: string;
+  label?: GraphQLString;
 }
 
 /** Contains details about the final price of an item, including discounts and tax. */
@@ -87,9 +115,9 @@ export interface CartItemInterface {
   /** Errors encountered while loading the cart item. */
   errors?: CartItemError[];
   /** True if requested quantity is less than available stock. */
-  is_available?: boolean;
+  is_available?: GraphQLBoolean;
   /** Message shown when the product is not available with this selected option. */
-  not_available_message?: string;
+  not_available_message?: GraphQLString;
   /** Detailed price breakdown for this item. */
   prices?: CartItemPrices;
   /** Product associated with this cart item. */
@@ -97,7 +125,7 @@ export interface CartItemInterface {
   /** Quantity of this item in the cart. */
   quantity?: GraphQLFloat;
   /** Unique ID for a `CartItemInterface` object. */
-  uid?: string;
+  uid?: GraphQLString;
 }
 
 /** Contains cart item collection with pagination metadata. */
@@ -107,7 +135,7 @@ export interface CartItems {
   /** Pagination information for cart items. */
   page_info?: SearchResultPageInfo;
   /** Number of returned cart items. */
-  total_count?: number;
+  total_count?: GraphQLInt;
 }
 
 /** Contains details about prices of a cart. */
@@ -131,27 +159,27 @@ export interface CartPrices {
 /** Coupon applied to a cart. */
 export interface AppliedCoupon {
   /** Coupon code applied by the shopper. */
-  code?: string;
+  code?: GraphQLString;
 }
 
 /** Available payment method displayed during checkout. */
 export interface AvailablePaymentMethod {
   /** Payment method code. */
-  code?: string;
+  code?: GraphQLString;
   /** If the payment method is an online integration. */
-  is_deferred?: boolean;
+  is_deferred?: GraphQLBoolean;
   /** Payment method title. */
-  title?: string;
+  title?: GraphQLString;
 }
 
 /** Selected payment method details. */
 export interface SelectedPaymentMethod {
   /** Payment method code. */
-  code?: string;
+  code?: GraphQLString;
   /** Purchase order number provided by the shopper. */
-  purchase_order_number?: string;
+  purchase_order_number?: GraphQLString;
   /** Payment method title. */
-  title?: string;
+  title?: GraphQLString;
 }
 
 /** Contains details about the selected shipping method and carrier. */
@@ -159,13 +187,13 @@ export interface SelectedShippingMethod {
   /** Total amount for this shipping method. */
   amount?: Money;
   /** Carrier code value. */
-  carrier_code?: string;
+  carrier_code?: GraphQLString;
   /** Carrier title value. */
-  carrier_title?: string;
+  carrier_title?: GraphQLString;
   /** Method code value. */
-  method_code?: string;
+  method_code?: GraphQLString;
   /** Method title value. */
-  method_title?: string;
+  method_title?: GraphQLString;
   /** Price excluding tax value. */
   price_excl_tax?: Money;
   /** Price including tax value. */
@@ -177,45 +205,45 @@ export interface CartAddress {
   /** Available shipping methods for this address. */
   available_shipping_methods?: AvailablePaymentMethod[];
   /** City for this address. */
-  city?: string;
+  city?: GraphQLString;
   /** Company name for this address. */
-  company?: string;
+  company?: GraphQLString;
   /** Country details for this address. */
   country?: CartAddressCountry;
   /** Customer notes (shipping-only in schema). */
-  customer_notes?: string;
+  customer_notes?: GraphQLString;
   /** Address fax number. */
-  fax?: string;
+  fax?: GraphQLString;
   /** Customer first name for this address. */
-  firstname?: string;
+  firstname?: GraphQLString;
   /** Customer address internal id (address book). */
-  id?: number;
+  id?: GraphQLInt;
   /** Customer last name for this address. */
-  lastname?: string;
+  lastname?: GraphQLString;
   /** Customer middle name for this address. */
-  middlename?: string;
+  middlename?: GraphQLString;
   /** Address pickup location code for in-store pickup. */
-  pickup_location_code?: string;
+  pickup_location_code?: GraphQLString;
   /** Postal code for this address. */
-  postcode?: string;
+  postcode?: GraphQLString;
   /** Address prefix value. */
-  prefix?: string;
+  prefix?: GraphQLString;
   /** Region details for this address. */
   region?: CartAddressRegion;
   /** Indicates whether shipping address is same as billing address. */
-  same_as_billing?: boolean;
+  same_as_billing?: GraphQLBoolean;
   /** Selected shipping method for this address. */
   selected_shipping_method?: SelectedShippingMethod;
   /** Street lines for this address. */
-  street?: string[];
+  street?: GraphQLString[];
   /** Address suffix value. */
-  suffix?: string;
+  suffix?: GraphQLString;
   /** Telephone number for this address. */
-  telephone?: string;
+  telephone?: GraphQLString;
   /** Address unique identifier. */
-  uid?: string;
+  uid?: GraphQLString;
   /** VAT company number for billing or shipping. */
-  vat_id?: string;
+  vat_id?: GraphQLString;
 }
 
 /** Lightweight shopping cart model. */
@@ -227,13 +255,13 @@ export interface Cart {
   /** Billing address assigned to cart. */
   billing_address?: CartAddress;
   /** Cart email address value. */
-  email?: string;
+  email?: GraphQLString;
   /** Gift message entered for the cart. */
   gift_message?: GiftMessage;
   /** Unique cart identifier. */
   id?: GraphQLID;
   /** Indicates whether the cart contains only virtual products. */
-  is_virtual?: boolean;
+  is_virtual?: GraphQLBoolean;
   /** Cart item collection for the cart. */
   itemsV2?: CartItems;
   /** Pricing details for the quote. */
@@ -258,6 +286,15 @@ export interface CustomerCartQuery {
   customerCart?: Cart;
 }
 
+/** Output for applyCouponToCart mutation. */
+export interface ApplyCouponToCartMutation {
+  /** Result payload after applying coupon. */
+  applyCouponToCart?: {
+    /** Updated cart data after mutation. */
+    cart?: Cart;
+  };
+}
+
 /** Output for addProductsToCart mutation. */
 export interface AddToCartMutation {
   /** Result payload after adding products. */
@@ -267,10 +304,19 @@ export interface AddToCartMutation {
     /** User-facing mutation errors. */
     user_errors?: Array<{
       /** Error code for the specific issue. */
-      code?: string;
+      code?: GraphQLString;
       /** Localized error message. */
-      message?: string;
+      message?: GraphQLString;
     }>;
+  };
+}
+
+/** Output for createGuestCart mutation. */
+export interface CreateGuestCartMutation {
+  /** Result payload after creating guest cart. */
+  createGuestCart?: {
+    /** Newly created cart data. */
+    cart?: Cart;
   };
 }
 
@@ -281,17 +327,35 @@ export interface PlaceOrderMutation {
     /** Place order errors returned by backend. */
     errors?: Array<{
       /** Error code value. */
-      code?: string;
+      code?: GraphQLString;
       /** Localized error message. */
-      message?: string;
+      message?: GraphQLString;
     }>;
     /** Full order information (selected subset). */
     orderV2?: {
       /** Order incremental number. */
-      number?: string;
+      number?: GraphQLString;
       /** Unique order identifier. */
-      uid?: string;
+      uid?: GraphQLString;
     };
+  };
+}
+
+/** Output for removeCouponFromCart mutation. */
+export interface RemoveCouponFromCartMutation {
+  /** Result payload after removing coupon. */
+  removeCouponFromCart?: {
+    /** Updated cart data after mutation. */
+    cart?: Cart;
+  };
+}
+
+/** Output for removeItemFromCart mutation. */
+export interface RemoveItemFromCartMutation {
+  /** Result payload after removing cart item. */
+  removeItemFromCart?: {
+    /** Updated cart data after mutation. */
+    cart?: Cart;
   };
 }
 
@@ -299,6 +363,15 @@ export interface PlaceOrderMutation {
 export interface SetBillingAddressMutation {
   /** Result payload for setting billing address. */
   setBillingAddressOnCart?: {
+    /** Updated cart data after mutation. */
+    cart?: Cart;
+  };
+}
+
+/** Output for setGuestEmailOnCart mutation. */
+export interface SetGuestEmailOnCartMutation {
+  /** Result payload for setting guest email. */
+  setGuestEmailOnCart?: {
     /** Updated cart data after mutation. */
     cart?: Cart;
   };
@@ -319,5 +392,25 @@ export interface SetShippingAddressMutation {
   setShippingAddressesOnCart?: {
     /** Updated cart data after mutation. */
     cart?: Cart;
+  };
+}
+
+/** Output for setShippingMethodsOnCart mutation. */
+export interface SetShippingMethodsMutation {
+  /** Result payload for setting shipping methods. */
+  setShippingMethodsOnCart?: {
+    /** Updated cart data after mutation. */
+    cart?: Cart;
+  };
+}
+
+/** Output for updateCartItems mutation. */
+export interface UpdateCartItemsMutation {
+  /** Result payload after updating cart items. */
+  updateCartItems?: {
+    /** Updated cart data after mutation. */
+    cart?: Cart;
+    /** User-facing mutation errors. */
+    errors?: CartUserInputError[];
   };
 }

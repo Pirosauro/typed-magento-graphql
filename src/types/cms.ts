@@ -1,45 +1,57 @@
-/**
- * CMS block payload attached to categories.
- */
+import type { GraphQLInt, GraphQLString } from './common';
+
+/** CMS block payload returned by cmsBlocks query. */
 export interface CmsBlock {
   /** Raw CMS block content in HTML. */
-  content?: string;
-  /** Indicates whether the CMS block is disabled. */
-  disabled?: boolean;
+  content?: GraphQLString;
   /** CMS block identifier value. */
-  identifier?: string;
+  identifier?: GraphQLString;
   /** CMS block title value. */
-  title?: string;
+  title?: GraphQLString;
 }
 
-/**
- * CMS page payload attached to categories.
- */
+/** CMS blocks container returned by cmsBlocks query. */
+export interface CmsBlocks {
+  /** CMS blocks matching the requested identifiers. */
+  items?: CmsBlock[];
+}
+
+/** CMS page payload returned by cmsPage query. */
 export interface CmsPage {
   /** Raw CMS page content in HTML. */
-  content?: string;
+  content?: GraphQLString;
   /** CMS page heading value. */
-  content_heading?: string;
+  content_heading?: GraphQLString;
   /** CMS page identifier value. */
-  identifier?: string;
+  identifier?: GraphQLString;
   /** CMS page meta description value. */
-  meta_description?: string;
+  meta_description?: GraphQLString;
   /** CMS page meta keywords value. */
-  meta_keywords?: string;
+  meta_keywords?: GraphQLString;
   /** CMS page meta title value. */
-  meta_title?: string;
-  /** CMS page page layout value. */
-  page_layout?: string;
-  /** CMS page page width value. */
-  page_width?: string;
+  meta_title?: GraphQLString;
+  /** CMS page layout value. */
+  page_layout?: GraphQLString;
   /** CMS page redirect code value. */
-  redirect_code?: number;
+  redirect_code?: GraphQLInt;
   /** CMS page relative URL value. */
-  relative_url?: string;
+  relative_url?: GraphQLString;
   /** CMS page title value. */
-  title?: string;
-  /** CMS page type value. */
-  type?: string;
+  title?: GraphQLString;
+  /** CMS page routed type value. */
+  type?: GraphQLString;
   /** CMS page URL key value. */
-  url_key?: string;
+  url_key?: GraphQLString;
+}
+
+/** Response shape for cmsBlocks query. */
+export interface CmsBlocksQuery {
+  /** CMS blocks payload. */
+  cmsBlocks?: CmsBlocks;
+}
+
+/** Response shape for cmsPage query. */
+export interface CmsPageQuery {
+  /** CMS page payload. */
+  cmsPage?: CmsPage;
 }

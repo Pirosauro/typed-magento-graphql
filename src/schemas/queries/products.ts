@@ -5,7 +5,7 @@ import {
   FilterMatchTypeInputSchema,
   FilterRangeTypeInputSchema,
   GraphQLIntSchema
-} from './common';
+} from '../common';
 
 /**
  * Validates product filter attributes used by Magento search.
