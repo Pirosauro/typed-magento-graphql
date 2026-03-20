@@ -47,9 +47,9 @@ pnpm add typed-magento-graphql zod
 | `cart` | 🔴 **MAX** | ✅ Complete | 0.248.0 | Guest cart by ID |
 | `cmsBlocks` | 🟠 **MEDIUM** | ✅ Complete | 0.248.0 | CMS blocks retrieval |
 | `cmsPage` | 🟠 **MEDIUM** | ✅ Complete | 0.248.0 | CMS page details |
-| `countries` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Country list with regions |
-| `currency` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Currency information |
-| `availableStores` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Multi-store configuration |
+| `countries` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Country list with regions |
+| `currency` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Currency information |
+| `availableStores` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Multi-store configuration |
 | `wishlist` | 🟡 **LOW** | ⏳ Planned | 0.248.3 | Use `customer.wishlists` instead |
 | `compareList` | 🟡 **LOW** | ⏳ Planned | 0.248.3 | Compare products feature |
 | `attributesForm` | 🟡 **LOW** | ⏳ Planned | 0.248.3 | Custom attributes forms |
@@ -80,24 +80,24 @@ pnpm add typed-magento-graphql zod
 | `updateCartItems` | 🔴 **MAX** | ✅ Complete | 0.248.0 | Update item quantities |
 | `removeItemFromCart` | 🔴 **MAX** | ✅ Complete | 0.248.0 | Remove item from cart |
 | `setGuestEmailOnCart` | 🔴 **MAX** | ✅ Complete | 0.248.0 | Set email for guest cart |
-| `mergeCarts` | 🔴 **MAX** | ⏳ Planned | 0.248.1 | Merge guest cart with customer cart |
-| `generateCustomerToken` | 🔴 **MAX** | ⏳ Planned | 0.248.1 | Customer login |
-| `revokeCustomerToken` | 🔴 **MAX** | ⏳ Planned | 0.248.1 | Customer logout |
-| `createCustomerV2` | 🔴 **MAX** | ⏳ Planned | 0.248.1 | Customer registration |
-| `addProductsToWishlist` | 🔴 **MAX** | ⏳ Planned | 0.248.1 | Add to wishlist |
-| `updateCustomerV2` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Update customer profile |
-| `changeCustomerPassword` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Change password |
-| `createCustomerAddress` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Add address to address book |
-| `updateCustomerAddress` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Update address |
-| `deleteCustomerAddress` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Delete address |
-| `createProductReview` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Submit product review |
-| `addWishlistItemsToCart` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Move wishlist items to cart |
-| `removeProductsFromWishlist` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Remove from wishlist |
-| `updateProductsInWishlist` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Update wishlist items |
-| `requestPasswordResetEmail` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Request password reset |
-| `resetPassword` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Reset password with token |
-| `subscribeEmailToNewsletter` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Newsletter subscription |
-| `contactUs` | 🟠 **MEDIUM** | ⏳ Planned | 0.248.1 | Contact form submission |
+| `mergeCarts` | 🔴 **MAX** | ✅ Complete | 0.248.1 | Merge guest cart with customer cart |
+| `generateCustomerToken` | 🔴 **MAX** | ✅ Complete | 0.248.1 | Customer login |
+| `revokeCustomerToken` | 🔴 **MAX** | ✅ Complete | 0.248.1 | Customer logout |
+| `createCustomerV2` | 🔴 **MAX** | ✅ Complete | 0.248.1 | Customer registration |
+| `addProductsToWishlist` | 🔴 **MAX** | ✅ Complete | 0.248.1 | Add to wishlist |
+| `updateCustomerV2` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Update customer profile |
+| `changeCustomerPassword` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Change password |
+| `createCustomerAddress` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Add address to address book |
+| `updateCustomerAddress` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Update address |
+| `deleteCustomerAddress` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Delete address |
+| `createProductReview` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Submit product review |
+| `addWishlistItemsToCart` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Move wishlist items to cart |
+| `removeProductsFromWishlist` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Remove from wishlist |
+| `updateProductsInWishlist` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Update wishlist items |
+| `requestPasswordResetEmail` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Request password reset |
+| `resetPassword` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Reset password with token |
+| `subscribeEmailToNewsletter` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Newsletter subscription |
+| `contactUs` | 🟠 **MEDIUM** | ✅ Complete | 0.248.1 | Contact form submission |
 | `assignCompareListToCustomer` | 🟡 **LOW** | ⏳ Planned | 0.248.3 | Assign compare list |
 | `createCompareList` | 🟡 **LOW** | ⏳ Planned | 0.248.3 | Create compare list |
 | `addProductsToCompareList` | 🟡 **LOW** | ⏳ Planned | 0.248.3 | Add to compare list |
@@ -155,6 +155,6 @@ pnpm add typed-magento-graphql zod
 | **Total Queries** | 27 |
 | **Total Mutations** | 56 |
 | **Total Operations** | 83 |
-| **✅ Complete (0.248.0)** | 17 |
-| **⏳ Planned** | 66 |
+| **✅ Complete (0.248.0)** | 42 |
+| **⏳ Planned** | 38 |
 | **❌ Deprecated** | 1 |
