@@ -1,6 +1,5 @@
-import { z } from 'zod';
-
-import { GraphQLIntSchema } from '../common';
+import { z } from "zod";
+import { GraphQLIntSchema } from "../common.js";
 
 /**
  * Validates variables for cancelOrder mutation.
@@ -11,16 +10,18 @@ export const CancelOrderMutationInputSchema = z
     input: z
       .object({
         /** Order increment identifier value. */
-        order_id: z.string().optional()
+        order_id: z.string().optional(),
       })
-      .catchall(z.unknown())
+      .catchall(z.unknown()),
   })
   .optional();
 
 /**
  * Inferred input type for cancelOrder mutation variables.
  */
-export type CancelOrderMutationInput = z.infer<typeof CancelOrderMutationInputSchema>;
+export type CancelOrderMutationInput = z.infer<
+  typeof CancelOrderMutationInputSchema
+>;
 
 /**
  * Validates variables for contactUs mutation.
@@ -35,16 +36,18 @@ export const ContactUsMutationInputSchema = z
         /** Contact message text value. */
         message: z.string(),
         /** Contact name value. */
-        name: z.string().optional()
+        name: z.string().optional(),
       })
-      .catchall(z.unknown())
+      .catchall(z.unknown()),
   })
   .optional();
 
 /**
  * Inferred input type for contactUs mutation variables.
  */
-export type ContactUsMutationInput = z.infer<typeof ContactUsMutationInputSchema>;
+export type ContactUsMutationInput = z.infer<
+  typeof ContactUsMutationInputSchema
+>;
 
 /**
  * Validates variables for deletePaymentToken mutation.
@@ -52,14 +55,16 @@ export type ContactUsMutationInput = z.infer<typeof ContactUsMutationInputSchema
 export const DeletePaymentTokenMutationInputSchema = z
   .object({
     /** Stored payment token hash value. */
-    public_hash: z.string()
+    public_hash: z.string(),
   })
   .optional();
 
 /**
  * Inferred input type for deletePaymentToken mutation variables.
  */
-export type DeletePaymentTokenMutationInput = z.infer<typeof DeletePaymentTokenMutationInputSchema>;
+export type DeletePaymentTokenMutationInput = z.infer<
+  typeof DeletePaymentTokenMutationInputSchema
+>;
 
 /**
  * Validates variables for reorderItems mutation.
@@ -67,14 +72,16 @@ export type DeletePaymentTokenMutationInput = z.infer<typeof DeletePaymentTokenM
 export const ReorderItemsMutationInputSchema = z
   .object({
     /** Order number value to reorder from. */
-    orderNumber: z.string()
+    orderNumber: z.string(),
   })
   .optional();
 
 /**
  * Inferred input type for reorderItems mutation variables.
  */
-export type ReorderItemsMutationInput = z.infer<typeof ReorderItemsMutationInputSchema>;
+export type ReorderItemsMutationInput = z.infer<
+  typeof ReorderItemsMutationInputSchema
+>;
 
 /**
  * Validates variables for sendEmailToFriend mutation.
@@ -89,13 +96,15 @@ export const SendEmailToFriendMutationInputSchema = z
         /** Recipient addresses value. */
         recipients: z.array(z.string().email()).optional(),
         /** Sender information payload value. */
-        sender: z.record(z.string(), z.unknown()).optional()
+        sender: z.record(z.string(), z.unknown()).optional(),
       })
-      .catchall(z.unknown())
+      .catchall(z.unknown()),
   })
   .optional();
 
 /**
  * Inferred input type for sendEmailToFriend mutation variables.
  */
-export type SendEmailToFriendMutationInput = z.infer<typeof SendEmailToFriendMutationInputSchema>;
+export type SendEmailToFriendMutationInput = z.infer<
+  typeof SendEmailToFriendMutationInputSchema
+>;

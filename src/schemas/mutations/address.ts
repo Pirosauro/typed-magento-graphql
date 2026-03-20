@@ -1,6 +1,5 @@
-import { z } from 'zod';
-
-import { CartAddressInputSchema, GraphQLIntSchema } from '../common';
+import { z } from "zod";
+import { CartAddressInputSchema, GraphQLIntSchema } from "../common.js";
 
 /**
  * Validates BillingAddressInput values for billing mutations.
@@ -14,7 +13,7 @@ export const BillingAddressInputSchema = z
     /** Flag for using shipping as billing address. */
     same_as_shipping: z.boolean().optional(),
     /** Flag for using billing as shipping address. */
-    use_for_shipping: z.boolean().optional()
+    use_for_shipping: z.boolean().optional(),
   })
   .optional();
 
@@ -35,7 +34,7 @@ export const ShippingAddressInputSchema = z
     /** Optional customer notes for shipping address. */
     customer_notes: z.string().optional(),
     /** Optional pickup location code value. */
-    pickup_location_code: z.string().optional()
+    pickup_location_code: z.string().optional(),
   })
   .optional();
 
@@ -54,15 +53,17 @@ export const SetBillingAddressMutationInputSchema = z
       /** Billing address payload object. */
       billing_address: BillingAddressInputSchema.unwrap(),
       /** Unique cart identifier value. */
-      cart_id: z.string()
-    })
+      cart_id: z.string(),
+    }),
   })
   .optional();
 
 /**
  * Inferred input type for setBillingAddressOnCart mutation variables.
  */
-export type SetBillingAddressMutationInput = z.infer<typeof SetBillingAddressMutationInputSchema>;
+export type SetBillingAddressMutationInput = z.infer<
+  typeof SetBillingAddressMutationInputSchema
+>;
 
 /**
  * Validates variables for setShippingAddressesOnCart mutation.
@@ -74,12 +75,14 @@ export const SetShippingAddressMutationInputSchema = z
       /** Unique cart identifier value. */
       cart_id: z.string(),
       /** Shipping addresses array payload. */
-      shipping_addresses: z.array(ShippingAddressInputSchema.unwrap())
-    })
+      shipping_addresses: z.array(ShippingAddressInputSchema.unwrap()),
+    }),
   })
   .optional();
 
 /**
  * Inferred input type for setShippingAddressesOnCart mutation variables.
  */
-export type SetShippingAddressMutationInput = z.infer<typeof SetShippingAddressMutationInputSchema>;
+export type SetShippingAddressMutationInput = z.infer<
+  typeof SetShippingAddressMutationInputSchema
+>;

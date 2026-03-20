@@ -5,8 +5,8 @@ import type {
   GraphQLInt,
   GraphQLString,
   Money,
-  SearchResultPageInfo
-} from './common';
+  SearchResultPageInfo,
+} from "./common.js";
 
 /** Product description text that may contain HTML. */
 export interface ComplexTextValue {
@@ -114,27 +114,29 @@ export interface UrlRewrite {
 /** Minimal product media gallery entry. */
 export interface MediaGalleryEntry {
   /** Entry content payload. */
-  content?: {
-    /** Image content (base64) value. */
-    base64_encoded_data?: GraphQLString;
-    /** Image file name value. */
-    name?: GraphQLString;
-    /** Image media type value. */
-    type?: GraphQLString;
-  } | {
-    /** Media type for videos. */
-    media_type?: GraphQLString;
-    /** Video description value. */
-    video_description?: GraphQLString;
-    /** Video metadata value. */
-    video_metadata?: GraphQLString;
-    /** Video provider value. */
-    video_provider?: GraphQLString;
-    /** Video title value. */
-    video_title?: GraphQLString;
-    /** Video URL value. */
-    video_url?: GraphQLString;
-  };
+  content?:
+    | {
+        /** Image content (base64) value. */
+        base64_encoded_data?: GraphQLString;
+        /** Image file name value. */
+        name?: GraphQLString;
+        /** Image media type value. */
+        type?: GraphQLString;
+      }
+    | {
+        /** Media type for videos. */
+        media_type?: GraphQLString;
+        /** Video description value. */
+        video_description?: GraphQLString;
+        /** Video metadata value. */
+        video_metadata?: GraphQLString;
+        /** Video provider value. */
+        video_provider?: GraphQLString;
+        /** Video title value. */
+        video_title?: GraphQLString;
+        /** Video URL value. */
+        video_url?: GraphQLString;
+      };
   /** Indicates whether the image is hidden from view. */
   disabled?: GraphQLBoolean;
   /** File path value. */
@@ -165,7 +167,7 @@ export interface MediaGalleryEntry {
 }
 
 /** Stock availability status for products. */
-export type ProductStockStatus = 'IN_STOCK' | 'OUT_OF_STOCK';
+export type ProductStockStatus = "IN_STOCK" | "OUT_OF_STOCK";
 
 /** Product interface representation for storefront queries. */
 export interface Product {

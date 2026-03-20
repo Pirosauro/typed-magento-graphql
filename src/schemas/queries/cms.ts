@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 /**
  * Validates variables for the cmsBlocks query.
@@ -6,7 +6,7 @@ import { z } from 'zod';
 export const CmsBlocksQueryInputSchema = z
   .object({
     /** CMS block identifiers to query. */
-    identifiers: z.array(z.string()).optional()
+    identifiers: z.array(z.string()).optional(),
   })
   .optional();
 
@@ -23,7 +23,7 @@ export const CmsPageQueryInputSchema = z
     /** Numeric CMS page identifier value. */
     id: z.number().int().optional(),
     /** String CMS page identifier value. */
-    identifier: z.string().optional()
+    identifier: z.string().optional(),
   })
   .optional();
 

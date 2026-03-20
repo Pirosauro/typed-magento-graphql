@@ -1,6 +1,5 @@
-import { z } from 'zod';
-
-import { CartAddressInputSchema, GraphQLIntSchema } from '../common';
+import { z } from "zod";
+import { GraphQLIntSchema } from "../common.js";
 
 /**
  * Validates variables for changeCustomerPassword mutation.
@@ -10,14 +9,16 @@ export const ChangeCustomerPasswordMutationInputSchema = z
     /** Current customer password value. */
     currentPassword: z.string(),
     /** New customer password value. */
-    newPassword: z.string()
+    newPassword: z.string(),
   })
   .optional();
 
 /**
  * Inferred input type for changeCustomerPassword mutation variables.
  */
-export type ChangeCustomerPasswordMutationInput = z.infer<typeof ChangeCustomerPasswordMutationInputSchema>;
+export type ChangeCustomerPasswordMutationInput = z.infer<
+  typeof ChangeCustomerPasswordMutationInputSchema
+>;
 
 /**
  * Validates basic customer address values for customer address mutations.
@@ -53,14 +54,16 @@ export const CustomerAddressMutationInputSchema = z
     /** Address telephone value. */
     telephone: z.string().optional(),
     /** Address VAT id value. */
-    vat_id: z.string().optional()
+    vat_id: z.string().optional(),
   })
   .optional();
 
 /**
  * Inferred input type for customer address mutation values.
  */
-export type CustomerAddressMutationInput = z.infer<typeof CustomerAddressMutationInputSchema>;
+export type CustomerAddressMutationInput = z.infer<
+  typeof CustomerAddressMutationInputSchema
+>;
 
 /**
  * Validates variables for createCustomerAddress mutation.
@@ -68,14 +71,16 @@ export type CustomerAddressMutationInput = z.infer<typeof CustomerAddressMutatio
 export const CreateCustomerAddressMutationInputSchema = z
   .object({
     /** Input payload for customer address creation mutation. */
-    input: CustomerAddressMutationInputSchema.unwrap()
+    input: CustomerAddressMutationInputSchema.unwrap(),
   })
   .optional();
 
 /**
  * Inferred input type for createCustomerAddress mutation variables.
  */
-export type CreateCustomerAddressMutationInput = z.infer<typeof CreateCustomerAddressMutationInputSchema>;
+export type CreateCustomerAddressMutationInput = z.infer<
+  typeof CreateCustomerAddressMutationInputSchema
+>;
 
 /**
  * Validates variables for createCustomerV2 mutation.
@@ -92,16 +97,18 @@ export const CreateCustomerMutationInputSchema = z
         /** Customer last name value. */
         lastname: z.string(),
         /** Customer password value. */
-        password: z.string()
+        password: z.string(),
       })
-      .catchall(z.unknown())
+      .catchall(z.unknown()),
   })
   .optional();
 
 /**
  * Inferred input type for createCustomerV2 mutation variables.
  */
-export type CreateCustomerMutationInput = z.infer<typeof CreateCustomerMutationInputSchema>;
+export type CreateCustomerMutationInput = z.infer<
+  typeof CreateCustomerMutationInputSchema
+>;
 
 /**
  * Validates variables for deleteCustomerAddress mutation.
@@ -109,14 +116,16 @@ export type CreateCustomerMutationInput = z.infer<typeof CreateCustomerMutationI
 export const DeleteCustomerAddressMutationInputSchema = z
   .object({
     /** Customer address identifier value. */
-    id: GraphQLIntSchema
+    id: GraphQLIntSchema,
   })
   .optional();
 
 /**
  * Inferred input type for deleteCustomerAddress mutation variables.
  */
-export type DeleteCustomerAddressMutationInput = z.infer<typeof DeleteCustomerAddressMutationInputSchema>;
+export type DeleteCustomerAddressMutationInput = z.infer<
+  typeof DeleteCustomerAddressMutationInputSchema
+>;
 
 /**
  * Validates variables for generateCustomerToken mutation.
@@ -126,14 +135,16 @@ export const GenerateCustomerTokenMutationInputSchema = z
     /** Customer email address value. */
     email: z.string().email(),
     /** Customer password value. */
-    password: z.string()
+    password: z.string(),
   })
   .optional();
 
 /**
  * Inferred input type for generateCustomerToken mutation variables.
  */
-export type GenerateCustomerTokenMutationInput = z.infer<typeof GenerateCustomerTokenMutationInputSchema>;
+export type GenerateCustomerTokenMutationInput = z.infer<
+  typeof GenerateCustomerTokenMutationInputSchema
+>;
 
 /**
  * Validates variables for requestPasswordResetEmail mutation.
@@ -141,14 +152,16 @@ export type GenerateCustomerTokenMutationInput = z.infer<typeof GenerateCustomer
 export const RequestPasswordResetEmailMutationInputSchema = z
   .object({
     /** Customer email address value. */
-    email: z.string().email()
+    email: z.string().email(),
   })
   .optional();
 
 /**
  * Inferred input type for requestPasswordResetEmail mutation variables.
  */
-export type RequestPasswordResetEmailMutationInput = z.infer<typeof RequestPasswordResetEmailMutationInputSchema>;
+export type RequestPasswordResetEmailMutationInput = z.infer<
+  typeof RequestPasswordResetEmailMutationInputSchema
+>;
 
 /**
  * Validates variables for resetPassword mutation.
@@ -160,14 +173,16 @@ export const ResetPasswordMutationInputSchema = z
     /** New customer password value. */
     newPassword: z.string(),
     /** Reset password token value. */
-    resetPasswordToken: z.string()
+    resetPasswordToken: z.string(),
   })
   .optional();
 
 /**
  * Inferred input type for resetPassword mutation variables.
  */
-export type ResetPasswordMutationInput = z.infer<typeof ResetPasswordMutationInputSchema>;
+export type ResetPasswordMutationInput = z.infer<
+  typeof ResetPasswordMutationInputSchema
+>;
 
 /**
  * Validates variables for subscribeEmailToNewsletter mutation.
@@ -175,14 +190,16 @@ export type ResetPasswordMutationInput = z.infer<typeof ResetPasswordMutationInp
 export const SubscribeEmailToNewsletterMutationInputSchema = z
   .object({
     /** Newsletter email address value. */
-    email: z.string().email()
+    email: z.string().email(),
   })
   .optional();
 
 /**
  * Inferred input type for subscribeEmailToNewsletter mutation variables.
  */
-export type SubscribeEmailToNewsletterMutationInput = z.infer<typeof SubscribeEmailToNewsletterMutationInputSchema>;
+export type SubscribeEmailToNewsletterMutationInput = z.infer<
+  typeof SubscribeEmailToNewsletterMutationInputSchema
+>;
 
 /**
  * Validates variables for updateCustomerAddress mutation.
@@ -192,14 +209,16 @@ export const UpdateCustomerAddressMutationInputSchema = z
     /** Customer address identifier value. */
     id: GraphQLIntSchema,
     /** Input payload for customer address update mutation. */
-    input: CustomerAddressMutationInputSchema
+    input: CustomerAddressMutationInputSchema,
   })
   .optional();
 
 /**
  * Inferred input type for updateCustomerAddress mutation variables.
  */
-export type UpdateCustomerAddressMutationInput = z.infer<typeof UpdateCustomerAddressMutationInputSchema>;
+export type UpdateCustomerAddressMutationInput = z.infer<
+  typeof UpdateCustomerAddressMutationInputSchema
+>;
 
 /**
  * Validates variables for updateCustomerV2 mutation.
@@ -212,13 +231,15 @@ export const UpdateCustomerMutationInputSchema = z
         /** Customer first name value. */
         firstname: z.string().optional(),
         /** Customer last name value. */
-        lastname: z.string().optional()
+        lastname: z.string().optional(),
       })
-      .catchall(z.unknown())
+      .catchall(z.unknown()),
   })
   .optional();
 
 /**
  * Inferred input type for updateCustomerV2 mutation variables.
  */
-export type UpdateCustomerMutationInput = z.infer<typeof UpdateCustomerMutationInputSchema>;
+export type UpdateCustomerMutationInput = z.infer<
+  typeof UpdateCustomerMutationInputSchema
+>;

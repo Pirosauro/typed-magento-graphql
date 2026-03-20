@@ -1,4 +1,4 @@
-import type { GraphQLInt, GraphQLString } from './common';
+import type { GraphQLInt, GraphQLString } from "./common.js";
 
 /**
  * Lightweight routable resource metadata.

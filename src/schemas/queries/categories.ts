@@ -1,6 +1,5 @@
-import { z } from 'zod';
-
-import { GraphQLIntSchema } from '../common';
+import { z } from "zod";
+import { GraphQLIntSchema } from "../common.js";
 
 /**
  * Validates variables for the categories query.
@@ -12,7 +11,7 @@ export const CategoriesQueryInputSchema = z
     /** Category filters applied to search. */
     filters: z.record(z.string(), z.unknown()).optional(),
     /** Requested page size for category results. */
-    pageSize: GraphQLIntSchema.optional()
+    pageSize: GraphQLIntSchema.optional(),
   })
   .optional();
 

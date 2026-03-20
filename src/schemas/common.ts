@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 /**
  * Shared schema for GraphQL identifier values.
@@ -23,7 +23,7 @@ export const FilterEqualTypeInputSchema = z
     /** Filter value to compare with equality. */
     eq: z.string().optional(),
     /** Multiple values to compare with inclusion. */
-    in: z.array(z.string()).optional()
+    in: z.array(z.string()).optional(),
   })
   .optional();
 
@@ -33,7 +33,7 @@ export const FilterEqualTypeInputSchema = z
 export const FilterMatchTypeInputSchema = z
   .object({
     /** Match value for text search. */
-    match: z.string().optional()
+    match: z.string().optional(),
   })
   .optional();
 
@@ -45,7 +45,7 @@ export const FilterRangeTypeInputSchema = z
     /** Lower bound for range filtering. */
     from: z.string().optional(),
     /** Upper bound for range filtering. */
-    to: z.string().optional()
+    to: z.string().optional(),
   })
   .optional();
 
@@ -85,7 +85,7 @@ export const CartAddressInputSchema = z
     /** Telephone value for the address. */
     telephone: z.string().optional(),
     /** VAT id value for the address. */
-    vat_id: z.string().optional()
+    vat_id: z.string().optional(),
   })
   .optional();
 
@@ -95,7 +95,11 @@ export const CartAddressInputSchema = z
 export const CartItemInputSchema = z
   .object({
     /** Entered options list for product customization. */
-    entered_options: z.array(z.object({ uid: z.string().optional(), value: z.string().optional() })).optional(),
+    entered_options: z
+      .array(
+        z.object({ uid: z.string().optional(), value: z.string().optional() })
+      )
+      .optional(),
     /** Parent SKU value for child products. */
     parent_sku: z.string().optional(),
     /** Quantity value for cart item. */
@@ -103,6 +107,6 @@ export const CartItemInputSchema = z
     /** Selected options list for product variants. */
     selected_options: z.array(z.string()).optional(),
     /** SKU value for cart item. */
-    sku: z.string()
+    sku: z.string(),
   })
   .optional();

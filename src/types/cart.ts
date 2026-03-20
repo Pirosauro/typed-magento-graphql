@@ -7,12 +7,12 @@ import type {
   GraphQLInt,
   GraphQLString,
   Money,
-  SearchResultPageInfo
-} from './common';
-import type { Product, ProductDiscount } from './product';
+  SearchResultPageInfo,
+} from "./common.js";
+import type { Product, ProductDiscount } from "./product.js";
 
-/** 
- * Recipient-sender gift message attached to the cart or cart item. 
+/**
+ * Recipient-sender gift message attached to the cart or cart item.
  */
 export interface GiftMessage {
   /** Sender name. */
@@ -23,8 +23,8 @@ export interface GiftMessage {
   to?: GraphQLString;
 }
 
-/** 
- * Cart item error details. 
+/**
+ * Cart item error details.
  */
 export interface CartItemError {
   /** Error code describing the cart item issue. */
@@ -33,20 +33,20 @@ export interface CartItemError {
   message?: GraphQLString;
 }
 
-/** 
- * Cart item error code enumeration. 
+/**
+ * Cart item error code enumeration.
  */
-export type CartItemErrorType = 'UNDEFINED' | 'ITEM_QTY' | 'ITEM_INCREMENTS';
+export type CartItemErrorType = "UNDEFINED" | "ITEM_QTY" | "ITEM_INCREMENTS";
 
 /** Cart user input error code enumeration. */
 export type CartUserInputErrorType =
-  | 'COULD_NOT_FIND_CART_ITEM'
-  | 'INSUFFICIENT_STOCK'
-  | 'INVALID_PARAMETER_VALUE'
-  | 'NOT_SALABLE'
-  | 'PRODUCT_NOT_FOUND'
-  | 'REQUIRED_PARAMETER_MISSING'
-  | 'UNDEFINED';
+  | "COULD_NOT_FIND_CART_ITEM"
+  | "INSUFFICIENT_STOCK"
+  | "INVALID_PARAMETER_VALUE"
+  | "NOT_SALABLE"
+  | "PRODUCT_NOT_FOUND"
+  | "REQUIRED_PARAMETER_MISSING"
+  | "UNDEFINED";
 
 /** Cart user input error details. */
 export interface CartUserInputError {
@@ -67,7 +67,7 @@ export interface CartTaxItem {
 /** Represents a discount applied to cart item pricing. */
 export interface Discount {
   /** Entity type this discount is applied to. */
-  applied_to?: 'ITEM' | 'SHIPPING' | GraphQLString;
+  applied_to?: "ITEM" | "SHIPPING" | GraphQLString;
   /** Discount amount. */
   amount?: Money;
   /** Coupon related to the discount, if any. */

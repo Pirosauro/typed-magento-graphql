@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 /**
  * Validates variables for createProductReview mutation.
@@ -13,13 +13,15 @@ export const CreateProductReviewMutationInputSchema = z
         /** Review summary value. */
         summary: z.string(),
         /** Review text value. */
-        text: z.string()
+        text: z.string(),
       })
-      .catchall(z.unknown())
+      .catchall(z.unknown()),
   })
   .optional();
 
 /**
  * Inferred input type for createProductReview mutation variables.
  */
-export type CreateProductReviewMutationInput = z.infer<typeof CreateProductReviewMutationInputSchema>;
+export type CreateProductReviewMutationInput = z.infer<
+  typeof CreateProductReviewMutationInputSchema
+>;

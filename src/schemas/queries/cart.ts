@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 /**
  * Validates variables for the cart query.
@@ -6,7 +6,7 @@ import { z } from 'zod';
 export const CartQueryInputSchema = z
   .object({
     /** Unique cart identifier value. */
-    cart_id: z.string()
+    cart_id: z.string(),
   })
   .optional();
 

@@ -1,11 +1,10 @@
-import { z } from 'zod';
-
+import { z } from "zod";
 import {
   FilterEqualTypeInputSchema,
   FilterMatchTypeInputSchema,
   FilterRangeTypeInputSchema,
-  GraphQLIntSchema
-} from '../common';
+  GraphQLIntSchema,
+} from "../common.js";
 
 /**
  * Validates product filter attributes used by Magento search.
@@ -25,14 +24,16 @@ export const ProductAttributeFilterInputSchema = z
     /** Filter by product SKU value. */
     sku: FilterEqualTypeInputSchema,
     /** Filter by product URL key value. */
-    url_key: FilterEqualTypeInputSchema
+    url_key: FilterEqualTypeInputSchema,
   })
   .optional();
 
 /**
  * Inferred input type for product attribute filtering.
  */
-export type ProductAttributeFilterInput = z.infer<typeof ProductAttributeFilterInputSchema>;
+export type ProductAttributeFilterInput = z.infer<
+  typeof ProductAttributeFilterInputSchema
+>;
 
 /**
  * Validates variables for the products query.
@@ -48,7 +49,7 @@ export const ProductsQueryInputSchema = z
     /** Full text search term for products. */
     search: z.string().optional(),
     /** Product sort definition by attributes. */
-    sort: z.record(z.string(), z.enum(['ASC', 'DESC'])).optional()
+    sort: z.record(z.string(), z.enum(["ASC", "DESC"])).optional(),
   })
   .optional();
 

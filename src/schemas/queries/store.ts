@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 /**
  * Validates variables for availableStores query.
@@ -6,14 +6,16 @@ import { z } from 'zod';
 export const AvailableStoresQueryInputSchema = z
   .object({
     /** Flag to filter by current store group value. */
-    useCurrentGroup: z.boolean().optional()
+    useCurrentGroup: z.boolean().optional(),
   })
   .optional();
 
 /**
  * Inferred input type for availableStores query variables.
  */
-export type AvailableStoresQueryInput = z.infer<typeof AvailableStoresQueryInputSchema>;
+export type AvailableStoresQueryInput = z.infer<
+  typeof AvailableStoresQueryInputSchema
+>;
 
 /**
  * Validates variables for countries query.
@@ -31,7 +33,7 @@ export type CountriesQueryInput = z.infer<typeof CountriesQueryInputSchema>;
 export const CountryQueryInputSchema = z
   .object({
     /** Country identifier value. */
-    id: z.string().optional()
+    id: z.string().optional(),
   })
   .optional();
 
@@ -56,11 +58,13 @@ export type CurrencyQueryInput = z.infer<typeof CurrencyQueryInputSchema>;
 export const IsEmailAvailableQueryInputSchema = z
   .object({
     /** Email address value to check. */
-    email: z.string().email()
+    email: z.string().email(),
   })
   .optional();
 
 /**
  * Inferred input type for isEmailAvailable query variables.
  */
-export type IsEmailAvailableQueryInput = z.infer<typeof IsEmailAvailableQueryInputSchema>;
+export type IsEmailAvailableQueryInput = z.infer<
+  typeof IsEmailAvailableQueryInputSchema
+>;

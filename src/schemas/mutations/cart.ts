@@ -1,6 +1,5 @@
-import { z } from 'zod';
-
-import { CartItemInputSchema, GraphQLFloatSchema } from '../common';
+import { z } from "zod";
+import { CartItemInputSchema, GraphQLFloatSchema } from "../common.js";
 
 /**
  * Validates variables for createGuestCart mutation.
@@ -11,16 +10,18 @@ export const CreateGuestCartMutationInputSchema = z
     input: z
       .object({
         /** Optional client-generated cart unique identifier value. */
-        cart_uid: z.string().optional()
+        cart_uid: z.string().optional(),
       })
-      .optional()
+      .optional(),
   })
   .optional();
 
 /**
  * Inferred input type for createGuestCart mutation variables.
  */
-export type CreateGuestCartMutationInput = z.infer<typeof CreateGuestCartMutationInputSchema>;
+export type CreateGuestCartMutationInput = z.infer<
+  typeof CreateGuestCartMutationInputSchema
+>;
 
 /**
  * Validates CartItemUpdateInput values for cart item update mutations.
@@ -30,7 +31,7 @@ export const CartItemUpdateInputSchema = z
     /** Cart item unique identifier value. */
     cart_item_uid: z.string().optional(),
     /** New quantity value for the cart item. */
-    quantity: GraphQLFloatSchema.optional()
+    quantity: GraphQLFloatSchema.optional(),
   })
   .optional();
 
@@ -47,15 +48,16 @@ export const AddToCartMutationInputSchema = z
     /** Unique cart identifier value. */
     cartId: z.string(),
     /** Items to be added to the cart. */
-    cartItems: z.array(CartItemInputSchema.unwrap())
+    cartItems: z.array(CartItemInputSchema.unwrap()),
   })
   .optional();
 
 /**
  * Inferred input type for addProductsToCart mutation variables.
  */
-export type AddToCartMutationInput = z.infer<typeof AddToCartMutationInputSchema>;
-
+export type AddToCartMutationInput = z.infer<
+  typeof AddToCartMutationInputSchema
+>;
 
 /**
  * Validates variables for updateCartItems mutation.
@@ -67,16 +69,17 @@ export const UpdateCartItemsMutationInputSchema = z
       /** Cart items array payload. */
       cart_items: z.array(CartItemUpdateInputSchema.unwrap()),
       /** Unique cart identifier value. */
-      cart_id: z.string()
-    })
+      cart_id: z.string(),
+    }),
   })
   .optional();
 
 /**
  * Inferred input type for updateCartItems mutation variables.
  */
-export type UpdateCartItemsMutationInput = z.infer<typeof UpdateCartItemsMutationInputSchema>;
-
+export type UpdateCartItemsMutationInput = z.infer<
+  typeof UpdateCartItemsMutationInputSchema
+>;
 
 /**
  * Validates variables for removeItemFromCart mutation.
@@ -88,15 +91,17 @@ export const RemoveItemFromCartMutationInputSchema = z
       /** Cart item unique identifier value. */
       cart_item_uid: z.string(),
       /** Unique cart identifier value. */
-      cart_id: z.string()
-    })
+      cart_id: z.string(),
+    }),
   })
   .optional();
 
 /**
  * Inferred input type for removeItemFromCart mutation variables.
  */
-export type RemoveItemFromCartMutationInput = z.infer<typeof RemoveItemFromCartMutationInputSchema>;
+export type RemoveItemFromCartMutationInput = z.infer<
+  typeof RemoveItemFromCartMutationInputSchema
+>;
 
 /**
  * Validates variables for setGuestEmailOnCart mutation.
@@ -108,12 +113,14 @@ export const SetGuestEmailOnCartMutationInputSchema = z
       /** Unique cart identifier value. */
       cart_id: z.string(),
       /** Guest email address value. */
-      email: z.email()
-    })
+      email: z.email(),
+    }),
   })
   .optional();
 
 /**
  * Inferred input type for setGuestEmailOnCart mutation variables.
  */
-export type SetGuestEmailOnCartMutationInput = z.infer<typeof SetGuestEmailOnCartMutationInputSchema>;
+export type SetGuestEmailOnCartMutationInput = z.infer<
+  typeof SetGuestEmailOnCartMutationInputSchema
+>;

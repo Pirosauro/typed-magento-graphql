@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 /**
  * Validates variables for the route query.
@@ -6,7 +6,7 @@ import { z } from 'zod';
 export const RouteQueryInputSchema = z
   .object({
     /** Relative storefront URL to resolve. */
-    url: z.string()
+    url: z.string(),
   })
   .optional();
 

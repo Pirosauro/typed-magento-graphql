@@ -1,5 +1,10 @@
-import type { GraphQLBoolean, GraphQLInt, GraphQLString, SearchResultPageInfo } from './common';
-import type { AttributeValueInterface } from './product';
+import type {
+  GraphQLBoolean,
+  GraphQLInt,
+  GraphQLString,
+  SearchResultPageInfo,
+} from "./common.js";
+import type { AttributeValueInterface } from "./product.js";
 
 /** Defines the customer's state or province information. */
 export interface CustomerAddressRegion {
@@ -62,8 +67,8 @@ export interface CustomerAddress {
 
 /** List of account confirmation statuses. */
 export type ConfirmationStatusEnum =
-  | 'ACCOUNT_CONFIRMED'
-  | 'ACCOUNT_CONFIRMATION_NOT_REQUIRED';
+  | "ACCOUNT_CONFIRMED"
+  | "ACCOUNT_CONFIRMATION_NOT_REQUIRED";
 
 /** Customer addresses container with pagination metadata. */
 export interface CustomerAddresses {

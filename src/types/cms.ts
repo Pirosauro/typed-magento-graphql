@@ -1,4 +1,4 @@
-import type { GraphQLInt, GraphQLString } from './common';
+import type { GraphQLInt, GraphQLString } from "./common.js";
 
 /** CMS block payload returned by cmsBlocks query. */
 export interface CmsBlock {

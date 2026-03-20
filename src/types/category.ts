@@ -1,6 +1,11 @@
-import type { GraphQLFloat, GraphQLInt, GraphQLString, SearchResultPageInfo } from './common';
-import type { CmsBlock } from './cms';
-import type { Product } from './product';
+import type {
+  GraphQLFloat,
+  GraphQLInt,
+  GraphQLString,
+  SearchResultPageInfo,
+} from "./common.js";
+import type { CmsBlock } from "./cms.js";
+import type { Product } from "./product.js";
 
 /**
  * Single breadcrumb item for category navigation.
@@ -18,8 +23,8 @@ export interface Breadcrumb {
   category_url_path?: GraphQLString;
 }
 
-/** 
- * Category products collection with pagination details. 
+/**
+ * Category products collection with pagination details.
  */
 export interface CategoryProducts {
   /** Product items assigned to this category. */

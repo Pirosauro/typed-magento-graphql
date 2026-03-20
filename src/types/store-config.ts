@@ -1,4 +1,4 @@
-import type { GraphQLBoolean, GraphQLInt, GraphQLString } from './common';
+import type { GraphQLBoolean, GraphQLInt, GraphQLString } from "./common.js";
 
 /** Frequently used storefront configuration values. */
 export interface StoreConfig {
