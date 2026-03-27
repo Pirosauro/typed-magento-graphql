@@ -1,10 +1,11 @@
 import type {
   GraphQLBoolean,
+  GraphQLID,
   GraphQLInt,
   GraphQLString,
   SearchResultPageInfo,
 } from "./common.js";
-import type { AttributeValueInterface } from "./product.js";
+import type { AttributeValueInterface, Product } from "./product.js";
 
 /** Defines the customer's state or province information. */
 export interface CustomerAddressRegion {
@@ -70,6 +71,77 @@ export type ConfirmationStatusEnum =
   | "ACCOUNT_CONFIRMED"
   | "ACCOUNT_CONFIRMATION_NOT_REQUIRED";
 
+/** Entered option value for wishlist items. */
+export interface EnteredOptionValue {
+  /** Option identifier. */
+  uid?: GraphQLID;
+  /** Option value. */
+  value?: GraphQLString;
+}
+
+/** Customizable option for wishlist items. */
+export interface SelectedCustomizableOption {
+  /** Unique customizable option ID. */
+  customizable_option_uid?: GraphQLID;
+  /** Is this option required. */
+  is_required?: GraphQLBoolean;
+  /** Label of the customizable option. */
+  label?: GraphQLString;
+  /** Sort order. */
+  sort_order?: GraphQLInt;
+  /** Type of customizable option. */
+  type?: GraphQLString;
+  /** Selected customizable option values. */
+  values?: Array<{
+    /** Customizable option value UID. */
+    customizable_option_value_uid?: GraphQLID;
+    /** Value label. */
+    label?: GraphQLString;
+    /** Selected value. */
+    value?: GraphQLString;
+  }>;
+}
+
+/** Wishlist item details. */
+export interface WishlistItem {
+  /** Product added to wishlist. */
+  product?: Product;
+  /** Unique wishlist item identifier. */
+  uid?: GraphQLID;
+  /** Item quantity. */
+  quantity?: GraphQLInt;
+  /** Entered option values for this wishlist item. */
+  entered_options?: EnteredOptionValue[];
+  /** Customizable options selected for this wishlist item. */
+  customizable_options?: SelectedCustomizableOption[];
+}
+
+/** Wishlist container with pagination. */
+export interface Wishlist {
+  /** Unique wishlist identifier. */
+  id?: GraphQLID;
+  /** Array of wishlist items. */
+  items?: WishlistItem[];
+  /** Pagination information. */
+  page_info?: SearchResultPageInfo;
+  /** Total number of wishlist items. */
+  items_count?: GraphQLInt;
+  /** Wishlist creation timestamp. */
+  created_at?: GraphQLString;
+  /** Wishlist update timestamp. */
+  updated_at?: GraphQLString;
+  /** Wishlist owner (customer). */
+  sharing_code?: GraphQLString;
+  /** Whether wishlist is shared. */
+  is_public?: GraphQLBoolean;
+}
+
+/** Response containing wishlist data. */
+export interface WishlistOutput {
+  /** Customer's wishlist. */
+  wishlist?: Wishlist;
+}
+
 /** Customer addresses container with pagination metadata. */
 export interface CustomerAddresses {
   /** Items containing the customer's shipping and billing addresses. */
@@ -123,7 +195,9 @@ export interface Customer {
   prefix?: GraphQLString;
   /** Suffix value. */
   suffix?: GraphQLString;
-  /** Customer wishlist retrieval (selected fields). */
+  /** Customer wishlist. */
+  wishlist?: Wishlist;
+  /** Legacy wishlist retrieval (selected fields). */
   wishlist_v2?: {
     /** Wishlist unique identifier. */
     id?: GraphQLString;

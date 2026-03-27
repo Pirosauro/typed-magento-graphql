@@ -58,7 +58,7 @@ export type CurrencyQueryInput = z.infer<typeof CurrencyQueryInputSchema>;
 export const IsEmailAvailableQueryInputSchema = z
   .object({
     /** Email address value to check. */
-    email: z.string().email(),
+    email: z.email(),
   })
   .optional();
 

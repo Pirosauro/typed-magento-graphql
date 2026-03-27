@@ -11,10 +11,20 @@ import {
  */
 export const ProductAttributeFilterInputSchema = z
   .object({
-    /** Filter by category unique identifier. */
+    /** Deprecated: use `category_uid` to filter product by category ID. */
+    category_id: FilterEqualTypeInputSchema,
+    /** Filter product by the unique ID for a `CategoryInterface` object. */
     category_uid: FilterEqualTypeInputSchema,
+    /** Filter product by category URL path. */
+    category_url_path: FilterEqualTypeInputSchema,
+    /** Attribute label: configurable variations */
+    configurable_variation: FilterEqualTypeInputSchema,
     /** Filter by product description text. */
     description: FilterMatchTypeInputSchema,
+    /** Attribute label: my color */
+    mycolor: FilterEqualTypeInputSchema,
+    /** Attribute label: my size */
+    mysize: FilterEqualTypeInputSchema,
     /** Filter by product display name text. */
     name: FilterMatchTypeInputSchema,
     /** Filter by product price range values. */

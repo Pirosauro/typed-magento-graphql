@@ -31,14 +31,16 @@ export const ContactUsMutationInputSchema = z
     /** Input payload for contact request mutation. */
     input: z
       .object({
-        /** Contact email address value. */
-        email: z.string().email(),
-        /** Contact message text value. */
-        message: z.string(),
-        /** Contact name value. */
-        name: z.string().optional(),
+        /** Contact message text value (required). */
+        comment: z.string(),
+        /** Contact email address value (required). */
+        email: z.email(),
+        /** Contact name value (required). */
+        name: z.string(),
+        /** Contact telephone number value (optional). */
+        telephone: z.string().optional(),
       })
-      .catchall(z.unknown()),
+      .strict(),
   })
   .optional();
 
@@ -84,6 +86,46 @@ export type ReorderItemsMutationInput = z.infer<
 >;
 
 /**
+ * Validates SendEmailToFriendRecipientInput values.
+ */
+export const SendEmailToFriendRecipientInputSchema = z
+  .object({
+    /** Recipient email address value. */
+    email: z.email(),
+    /** Recipient name value. */
+    name: z.string(),
+  })
+  .strict();
+
+/**
+ * Inferred input type for SendEmailToFriendRecipientInput values.
+ */
+export type SendEmailToFriendRecipientInput = z.infer<
+  typeof SendEmailToFriendRecipientInputSchema
+>;
+
+/**
+ * Validates SendEmailToFriendSenderInput values.
+ */
+export const SendEmailToFriendSenderInputSchema = z
+  .object({
+    /** Sender email address value. */
+    email: z.email(),
+    /** Message text to be sent. */
+    message: z.string(),
+    /** Sender name value. */
+    name: z.string(),
+  })
+  .strict();
+
+/**
+ * Inferred input type for SendEmailToFriendSenderInput values.
+ */
+export type SendEmailToFriendSenderInput = z.infer<
+  typeof SendEmailToFriendSenderInputSchema
+>;
+
+/**
  * Validates variables for sendEmailToFriend mutation.
  */
 export const SendEmailToFriendMutationInputSchema = z
@@ -91,14 +133,14 @@ export const SendEmailToFriendMutationInputSchema = z
     /** Input payload for email to friend mutation. */
     input: z
       .object({
-        /** Product identifier value. */
-        product_id: GraphQLIntSchema.optional(),
-        /** Recipient addresses value. */
-        recipients: z.array(z.string().email()).optional(),
-        /** Sender information payload value. */
-        sender: z.record(z.string(), z.unknown()).optional(),
+        /** Product identifier value (required). */
+        product_id: GraphQLIntSchema,
+        /** Recipient addresses value (required). */
+        recipients: z.array(SendEmailToFriendRecipientInputSchema),
+        /** Sender information payload value (required). */
+        sender: SendEmailToFriendSenderInputSchema,
       })
-      .catchall(z.unknown()),
+      .strict(),
   })
   .optional();
 

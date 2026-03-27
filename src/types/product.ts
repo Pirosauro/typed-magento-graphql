@@ -110,6 +110,19 @@ export interface UrlRewrite {
   /** Request URL. */
   url?: GraphQLString;
 }
+/**
+ * Media gallery item representing a product image or video.
+ */
+export interface MediaGallery {
+  /** Indicates whether the media is hidden from view. */
+  disabled?: GraphQLBoolean;
+  /** Label or alt-text for the media item. */
+  label?: GraphQLString;
+  /** Position of the media item in the gallery. */
+  position?: GraphQLInt;
+  /** URL to the media resource. */
+  url?: GraphQLString;
+}
 
 /** Minimal product media gallery entry. */
 export interface MediaGalleryEntry {
@@ -169,6 +182,40 @@ export interface MediaGalleryEntry {
 /** Stock availability status for products. */
 export type ProductStockStatus = "IN_STOCK" | "OUT_OF_STOCK";
 
+/** Product review rating details. */
+export interface ProductReviewRating {
+  /** Rating aspect name (e.g., quality, price). */
+  name?: GraphQLString;
+  /** Rating value given by customer. */
+  value?: GraphQLString;
+}
+
+/** Single product review. */
+export interface ProductReview {
+  /** Average rating of all ratings in this review. */
+  average_rating?: GraphQLFloat;
+  /** Date the review was created. */
+  created_at?: GraphQLString;
+  /** Customer's nickname for review. */
+  nickname?: GraphQLString;
+  /** Product being reviewed. */
+  product?: Product;
+  /** Array of ratings by category. */
+  ratings_breakdown?: ProductReviewRating[];
+  /** Review title/summary. */
+  summary?: GraphQLString;
+  /** Review text content. */
+  text?: GraphQLString;
+}
+
+/** Product reviews paginated response. */
+export interface ProductReviews {
+  /** Array of product reviews. */
+  items?: ProductReview[];
+  /** Pagination info for reviews. */
+  page_info?: SearchResultPageInfo;
+}
+
 /** Product interface representation for storefront queries. */
 export interface Product {
   /** Relative canonical URL for the product. */
@@ -199,7 +246,9 @@ export interface Product {
   /** Maximum quantity allowed in shopping cart. */
   max_sale_qty?: GraphQLFloat;
   /** Product media gallery entries. */
-  media_gallery?: MediaGalleryEntry[];
+  media_gallery?: MediaGallery[];
+  /** Product media gallery entries with content details. */
+  media_gallery_entries?: MediaGalleryEntry[];
   /** Product meta description value. */
   meta_description?: GraphQLString;
   /** Product meta keyword value. */
@@ -226,11 +275,13 @@ export interface Product {
   product_links?: ProductLinksInterface[];
   /** Product available quantity. */
   quantity?: GraphQLFloat;
-  /** Average rating summary. */
+  /** Rating summary (required for products). */
   rating_summary?: GraphQLFloat;
   /** Related products list. */
   related_products?: Product[];
-  /** Product review count. */
+  /** Product reviews with pagination. */
+  reviews?: ProductReviews;
+  /** Product review count (required for products). */
   review_count?: GraphQLInt;
   /** Short description (may contain HTML). */
   short_description?: ComplexTextValue;
@@ -240,6 +291,8 @@ export interface Product {
   small_image?: ProductImage;
   /** Discounted price of the product. */
   special_price?: GraphQLFloat;
+  /** Start date for special pricing. */
+  special_from_date?: GraphQLString;
   /** End date for special pricing. */
   special_to_date?: GraphQLString;
   /** Stock status. */

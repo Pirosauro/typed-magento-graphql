@@ -1,4 +1,46 @@
 import { z } from "zod";
+import { GraphQLFloatSchema } from "../common.js";
+
+/**
+ * Validates EnteredOptionInput values for wishlist items.
+ */
+export const EnteredOptionInputSchema = z
+  .object({
+    /** The unique ID of the entered option. */
+    uid: z.string().optional(),
+    /** The entered value for the option. */
+    value: z.string().optional(),
+  })
+  .passthrough()
+  .optional();
+
+/**
+ * Inferred input type for EnteredOptionInput values.
+ */
+export type EnteredOptionInput = z.infer<typeof EnteredOptionInputSchema>;
+
+/**
+ * Validates WishlistItemInput values for wishlist mutations.
+ */
+export const WishlistItemInputSchema = z
+  .object({
+    /** Entered options list for product customization. */
+    entered_options: z.array(EnteredOptionInputSchema).optional(),
+    /** Parent SKU value for child products. */
+    parent_sku: z.string().optional(),
+    /** Quantity value for the wishlist item (required). */
+    quantity: GraphQLFloatSchema,
+    /** Selected options list for product variants. */
+    selected_options: z.array(z.string()).optional(),
+    /** SKU value for the wishlist item (required). */
+    sku: z.string(),
+  })
+  .strict();
+
+/**
+ * Inferred input type for WishlistItemInput values.
+ */
+export type WishlistItemInput = z.infer<typeof WishlistItemInputSchema>;
 
 /**
  * Validates variables for addProductsToWishlist mutation.
@@ -8,7 +50,7 @@ export const AddProductsToWishlistMutationInputSchema = z
     /** Wishlist identifier value. */
     wishlistId: z.string(),
     /** Wishlist item input payload value. */
-    wishlistItems: z.array(z.record(z.string(), z.unknown())),
+    wishlistItems: z.array(WishlistItemInputSchema),
   })
   .optional();
 
@@ -65,7 +107,7 @@ export const UpdateProductsInWishlistMutationInputSchema = z
     /** Wishlist identifier value. */
     wishlistId: z.string(),
     /** Wishlist item updates payload value. */
-    wishlistItems: z.array(z.record(z.string(), z.unknown())),
+    wishlistItems: z.array(WishlistItemInputSchema),
   })
   .optional();
 

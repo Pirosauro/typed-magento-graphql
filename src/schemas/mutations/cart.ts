@@ -124,3 +124,22 @@ export const SetGuestEmailOnCartMutationInputSchema = z
 export type SetGuestEmailOnCartMutationInput = z.infer<
   typeof SetGuestEmailOnCartMutationInputSchema
 >;
+
+/**
+ * Validates variables for mergeCarts mutation.
+ */
+export const MergeCartsMutationInputSchema = z
+  .object({
+    /** The guest's cart ID before they login. */
+    source_cart_id: z.string(),
+    /** The cart ID after the guest logs in. */
+    destination_cart_id: z.string().optional(),
+  })
+  .optional();
+
+/**
+ * Inferred input type for mergeCarts mutation variables.
+ */
+export type MergeCartsMutationInput = z.infer<
+  typeof MergeCartsMutationInputSchema
+>;

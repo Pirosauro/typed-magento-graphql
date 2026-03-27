@@ -83,6 +83,24 @@ export type CreateCustomerAddressMutationInput = z.infer<
 >;
 
 /**
+ * Validates AttributeValueInput for custom attributes.
+ */
+export const AttributeValueInputSchema = z
+  .object({
+    /** The attribute code. */
+    attribute_code: z.string().optional(),
+    /** The attribute value. */
+    value: z.unknown().optional(),
+  })
+  .passthrough()
+  .optional();
+
+/**
+ * Inferred input type for AttributeValueInput.
+ */
+export type AttributeValueInput = z.infer<typeof AttributeValueInputSchema>;
+
+/**
  * Validates variables for createCustomerV2 mutation.
  */
 export const CreateCustomerMutationInputSchema = z
@@ -90,16 +108,36 @@ export const CreateCustomerMutationInputSchema = z
     /** Input payload for customer creation mutation. */
     input: z
       .object({
-        /** Customer email address value. */
-        email: z.string().email(),
-        /** Customer first name value. */
+        /** Customer email address value (required). */
+        email: z.email(),
+        /** Customer first name value (required). */
         firstname: z.string(),
-        /** Customer last name value. */
+        /** Customer last name value (required). */
         lastname: z.string(),
         /** Customer password value. */
-        password: z.string(),
+        password: z.string().optional(),
+        /** Customer's date of birth value. */
+        date_of_birth: z.string().optional(),
+        /** Customer's date of birth value (alternative format). */
+        dob: z.string().optional(),
+        /** Customer's gender value (Male - 1, Female - 2). */
+        gender: GraphQLIntSchema.optional(),
+        /** Customer's middle name value. */
+        middlename: z.string().optional(),
+        /** Customer's prefix/title value (e.g., Dr., Mr., Mrs.). */
+        prefix: z.string().optional(),
+        /** Customer's suffix value (e.g., Sr., Jr., III). */
+        suffix: z.string().optional(),
+        /** Customer's Tax/VAT number value. */
+        taxvat: z.string().optional(),
+        /** Newsletter subscription preference. */
+        is_subscribed: z.boolean().optional(),
+        /** Remote shopping assistance preference. */
+        allow_remote_shopping_assistance: z.boolean().optional(),
+        /** Custom attributes array value. */
+        custom_attributes: z.array(AttributeValueInputSchema).optional(),
       })
-      .catchall(z.unknown()),
+      .strict(),
   })
   .optional();
 
@@ -133,7 +171,7 @@ export type DeleteCustomerAddressMutationInput = z.infer<
 export const GenerateCustomerTokenMutationInputSchema = z
   .object({
     /** Customer email address value. */
-    email: z.string().email(),
+    email: z.email(),
     /** Customer password value. */
     password: z.string(),
   })
@@ -152,7 +190,7 @@ export type GenerateCustomerTokenMutationInput = z.infer<
 export const RequestPasswordResetEmailMutationInputSchema = z
   .object({
     /** Customer email address value. */
-    email: z.string().email(),
+    email: z.email(),
   })
   .optional();
 
@@ -169,7 +207,7 @@ export type RequestPasswordResetEmailMutationInput = z.infer<
 export const ResetPasswordMutationInputSchema = z
   .object({
     /** Customer email address value. */
-    email: z.string().email(),
+    email: z.email(),
     /** New customer password value. */
     newPassword: z.string(),
     /** Reset password token value. */
@@ -190,7 +228,7 @@ export type ResetPasswordMutationInput = z.infer<
 export const SubscribeEmailToNewsletterMutationInputSchema = z
   .object({
     /** Newsletter email address value. */
-    email: z.string().email(),
+    email: z.email(),
   })
   .optional();
 
@@ -228,12 +266,32 @@ export const UpdateCustomerMutationInputSchema = z
     /** Input payload for customer update mutation. */
     input: z
       .object({
+        /** Customer's date of birth value. */
+        date_of_birth: z.string().optional(),
+        /** Customer's date of birth value (alternative format). */
+        dob: z.string().optional(),
         /** Customer first name value. */
         firstname: z.string().optional(),
+        /** Customer's gender value (Male - 1, Female - 2). */
+        gender: GraphQLIntSchema.optional(),
+        /** Newsletter subscription preference. */
+        is_subscribed: z.boolean().optional(),
         /** Customer last name value. */
         lastname: z.string().optional(),
+        /** Customer's middle name value. */
+        middlename: z.string().optional(),
+        /** Customer's prefix/title value (e.g., Dr., Mr., Mrs.). */
+        prefix: z.string().optional(),
+        /** Customer's suffix value (e.g., Sr., Jr., III). */
+        suffix: z.string().optional(),
+        /** Customer's Tax/VAT number value. */
+        taxvat: z.string().optional(),
+        /** Remote shopping assistance preference. */
+        allow_remote_shopping_assistance: z.boolean().optional(),
+        /** Custom attributes array value. */
+        custom_attributes: z.array(AttributeValueInputSchema).optional(),
       })
-      .catchall(z.unknown()),
+      .strict(),
   })
   .optional();
 
@@ -242,4 +300,17 @@ export const UpdateCustomerMutationInputSchema = z
  */
 export type UpdateCustomerMutationInput = z.infer<
   typeof UpdateCustomerMutationInputSchema
+>;
+
+/**
+ * Validates variables for revokeCustomerToken mutation.
+ * This mutation takes no parameters.
+ */
+export const RevokeCustomerTokenMutationInputSchema = z.object({}).optional();
+
+/**
+ * Inferred input type for revokeCustomerToken mutation variables.
+ */
+export type RevokeCustomerTokenMutationInput = z.infer<
+  typeof RevokeCustomerTokenMutationInputSchema
 >;

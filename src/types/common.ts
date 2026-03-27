@@ -50,3 +50,23 @@ export interface CartAddressRegion {
   /** Internal region identifier. */
   region_id?: GraphQLInt;
 }
+
+/**
+ * Discount type enumeration for cart operations.
+ */
+export type CartDiscountType = "ITEM" | "SHIPPING" | GraphQLString;
+
+/**
+ * Price type enumeration for product pricing.
+ */
+export type PriceTypeEnum = "FIXED" | "PERCENT" | GraphQLString;
+
+/**
+ * Scope type enumeration for store configuration.
+ */
+export type ScopeTypeEnum = "GLOBAL" | "WEBSITE" | "STORE";
+
+/**
+ * Sort order enumeration.
+ */
+export type SortEnum = "ASC" | "DESC" | GraphQLString;
